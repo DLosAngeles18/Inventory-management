@@ -1,0 +1,38 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int numero1, numero2, numero3;
+    
+    cout << "Introduce el primer número: ";
+    cin >> numero1;
+    
+    cout << "Introduce el segundo número: ";
+    cin >> numero2;
+    
+    cout << "Introduce el tercer número: ";
+    cin >> numero3;
+    
+    int numeros_ascendentes[] = {numero1, numero2, numero3};
+    sort(numeros_ascendentes, numeros_ascendentes + 3);
+    
+    int numeros_descendentes[] = {numero1, numero2, numero3};
+    sort(numeros_descendentes, numeros_descendentes + 3, greater<int>());
+    
+    cout << "Los números de forma ascendente son: ";
+    for (int i = 0; i < 3; i++) {
+        cout << numeros_ascendentes[i] << " ";
+    }
+    cout << endl;
+    
+    cout << "Los números de forma descendente son: ";
+    for (int i = 0; i < 3; i++) {
+        cout << numeros_descendentes[i] << " ";
+    }
+    cout << endl;
+    
+    return 0;
+}
+
+// Franklyn Brea 2023-0008

@@ -1,0 +1,28 @@
+  #include <iostream>
+using namespace std;
+
+double calcular_retencion(double salario) {
+    double retencion;
+    if (salario <= 12450) {
+        retencion = salario * 0.19;
+    } else if (salario <= 20200) {
+        retencion = salario * 0.24;
+    } else if (salario <= 35200) {
+        retencion = salario * 0.30;
+    } else if (salario <= 60000) {
+        retencion = salario * 0.37;
+    } else {
+        retencion = salario * 0.45;
+    }
+    return retencion;
+}
+
+int main() {
+    for (double salario = 0; salario <= 61250; salario += 100) {
+        double retencion = calcular_retencion(salario);
+        cout << "Salario: " << salario << " - Retención: " << retencion << endl;
+    }
+    return 0;
+}
+
+//Franklyn Brea 2023-0008

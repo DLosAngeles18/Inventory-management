@@ -1,0 +1,15 @@
+#Yessica Baret Perez 2023-0011
+#Karla Marcel Abreu Sánchez 2023-0081
+#Gabriel Osvaldo Maldonado del Rosario 2023-0082
+#Oscar Alfredo Suero Dominguez 2023-0079
+#Alexis Tomas Pereyra Beltran 2023-0005
+#Franklyn D Los Angeles Brea Guzman 2023-0008
+
+#Solicitar al usuario el valor de la temperatura en grados Celsius
+celsius = float(input("Ingrese la temperatura en grados Celsius: "))
+
+#Realizar la conversión de grados Celsius a grados Fahrenheit
+fahrenheit = (celsius * 9/5) + 32
+
+#Imprimir el resultado de la conversión
+print("La temperatura en grados Fahrenheit es = ", fahrenheit)

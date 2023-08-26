@@ -1,0 +1,117 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct Producto {
+    string codigo;
+    string nombre;
+    string descripcion;
+    int cantidad;
+};
+
+void agregarProducto(Producto inventario[], int &numProductos) {
+    if (numProductos < 100) {
+        Producto nuevoProducto;
+        cout << "Ingrese el código del producto: ";
+        cin >> nuevoProducto.codigo;
+
+        // Validar si el código ya existe
+        // ... Código de validación ...
+
+        cout << "Ingrese el nombre del producto: ";
+        cin.ignore();
+        getline(cin, nuevoProducto.nombre);
+        cout << "Ingrese la descripción del producto: ";
+        getline(cin, nuevoProducto.descripcion);
+
+        cout << "Ingrese la cantidad inicial en inventario: ";
+        cin >> nuevoProducto.cantidad;
+
+        inventario[numProductos] = nuevoProducto;
+        numProductos++;
+        cout << "Producto agregado exitosamente." << endl;
+    } else {
+        cout << "No es posible agregar más productos, inventario lleno." << endl;
+    }
+}
+
+void venderProducto(Producto inventario[], int numProductos) {
+    string codigoProducto;
+    int cantidadVenta;
+
+    cout << "Ingrese el código del producto a vender: ";
+    cin >> codigoProducto;
+
+    for (int i = 0; i < numProductos; i++) {
+        if (inventario[i].codigo == codigoProducto) {
+            cout << "Ingrese la cantidad a vender: ";
+            cin >> cantidadVenta;
+
+            if (cantidadVenta <= inventario[i].cantidad) {
+                inventario[i].cantidad -= cantidadVenta;
+                cout << "Venta realizada exitosamente." << endl;
+            } else {
+                cout << "No hay suficiente cantidad en inventario." << endl;
+            }
+
+            return;
+        }
+    }
+
+    cout << "Producto no encontrado en el inventario." << endl;
+}
+
+void verInventario(Producto inventario[], int numProductos) {
+    cout << "Inventario actual:" << endl;
+    for (int i = 0; i < numProductos; i++) {
+        cout << "Código: " << inventario[i].codigo << endl;
+        cout << "Nombre: " << inventario[i].nombre << endl;
+        cout << "Descripción: " << inventario[i].descripcion << endl;
+        cout << "Cantidad en inventario: " << inventario[i].cantidad << endl;
+        cout << "-----------------------" << endl;
+    }
+}
+
+int sistemaGestionInventario() {
+    Producto inventario[100];
+    int numProductos = 0;
+
+    int opcion;
+    do {
+        cout << "Sistema de Gestión de Inventario" << endl;
+        cout << "1. Agregar producto" << endl;
+        cout << "2. Vender producto" << endl;
+        cout << "3. Ver inventario" << endl;
+        cout << "4. Salir" << endl;
+        cout << "Ingrese la opción: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                agregarProducto(inventario, numProductos);
+                break;
+            case 2:
+                venderProducto(inventario, numProductos);
+                break;
+            case 3:
+                verInventario(inventario, numProductos);
+                break;
+            case 4:
+                cout << "¡Hasta luego!" << endl;
+                break;
+            default:
+                cout << "Opción inválida." << endl;
+                break;
+        }
+    } while (opcion != 4);
+
+    return 0;
+}
+
+int main() {
+    sistemaGestionInventario();
+    return 0;
+}
+
+//Franklyn Brea 2023-0008
